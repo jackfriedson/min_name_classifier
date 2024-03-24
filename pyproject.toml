@@ -1,0 +1,19 @@
+[project]
+name = "min_name_classifier"
+version = "0.1.0"
+requires-python = ">=3.10"
+
+dependencies = [
+    "datasets",
+    "evaluate",
+    "jupyter",
+    "mypy",
+    "torch",
+    "transformers",
+    "transformers[torch]",
+    "ruff",
+]
+
+[tool.ruff]
+select = ["E", "F", "W", "I"]
+line-length = 120
