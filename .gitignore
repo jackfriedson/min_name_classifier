@@ -1,6 +1,6 @@
 # Project
-models/
-data/
+models/*
+data/sources/*
 
 
 # Byte-compiled / optimized / DLL files

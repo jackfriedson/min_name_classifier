@@ -60,15 +60,17 @@ def build_names_dataset():
         for i, row in enumerate(rows)
     ]
 
-    with open("data/names_dataset.json", "w") as f:
-        json.dump(rows, f, indent=2)
+    with open("data/names_dataset.csv", "w") as f:
+        csvwriter = csv.DictWriter(f, fieldnames=rows[0].keys())
+        csvwriter.writeheader()
+        csvwriter.writerows(rows)
 
     print(f"Wrote {len(rows)} rows to data/names_dataset.csv.")
 
 
 def load_english_words() -> list[str]:
     non_name_words = []
-    with open("data/kaggle_english_words/words.txt", "r") as f:
+    with open("data/sources/kaggle_english_words/words.txt", "r") as f:
         for line in f:
             line = line.strip()
             if line.istitle():
@@ -86,7 +88,7 @@ def load_english_words() -> list[str]:
 
 def load_surnames() -> list[str]:
     surnames = []
-    with open("data/fivethirtyeight_names/surnames.csv", "r") as f:
+    with open("data/sources/fivethirtyeight_names/surnames.csv", "r") as f:
         csvreader = csv.DictReader(f)
         for row in csvreader:
             surnames.append(row["name"].lower())
@@ -98,13 +100,13 @@ def load_surnames() -> list[str]:
 
 def load_baby_names() -> list[str]:
     national_names = []
-    with open("data/kaggle_baby_names/NationalNames.csv", "r") as f:
+    with open("data/sources/kaggle_baby_names/NationalNames.csv", "r") as f:
         csvreader = csv.DictReader(f)
         for row in csvreader:
             national_names.append(row["Name"].lower())
 
     state_names = []
-    with open("data/kaggle_baby_names/StateNames.csv", "r") as f:
+    with open("data/sources/kaggle_baby_names/StateNames.csv", "r") as f:
         csvreader = csv.DictReader(f)
         for row in csvreader:
             state_names.append(row["Name"].lower())

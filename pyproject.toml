@@ -8,11 +8,15 @@ dependencies = [
     "evaluate",
     "jupyter",
     "mypy",
+    "seqeval",
     "torch",
     "transformers",
     "transformers[torch]",
     "ruff",
 ]
+
+[tool.setuptools]
+py-modules = ["resybot"]
 
 [tool.ruff]
 select = ["E", "F", "W", "I"]
